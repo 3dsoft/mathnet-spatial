@@ -1,3 +1,39 @@
+기본 예제
+=========
+https://github.com/3dsoft/mathnet-spatial/tree/master/src/Spatial.Tests/Euclidean
+
+
+Panel(p1)에서 테스트
+```
+Graphics g;
+g = p1.CreateGraphics();
+g.Clear(Color.Black);
+```
+```
+// x,y 위치에 점 찍기
+var p = new Point2D(10, 10);
+g.DrawRectangle(Pens.Red, (float)p.X, (float)p.Y, 3, 3);
+```
+```
+// 각도 지정
+// 0,0을 기준으로 거리(30)에 따른 x,y 좌표를 계산
+for (int i = 0; i < 360; i++)
+{
+    var angle = Angle.FromDegrees(i);
+    var p = Point2D.FromPolar(30, angle); 
+    g.DrawRectangle(Pens.Red, (float)p.X + 100, (float)p.Y + 100, 1, 1);
+}
+```
+```
+// 2D Point끼리 +/-  연산만 가능함.
+// actual에는 -2, -2가 되고, +연산을 할경우 0, 0이 된다. 
+var p = Point2D.Parse("-1, -1");
+var v = Vector2D.Parse("1, 1");
+
+var actual = p - v; // 빼기 : -2,-2
+var actual = p + v; // 더하기 : 0,0
+```
+
 Math.NET Spatial
 ================
 
